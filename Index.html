@@ -1,0 +1,987 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title> Acupet – Landing Demo</title>
+
+<style>
+:root{
+  --bg:#0b0c10;
+  --panel: rgba(255,255,255,.06);
+  --panel2: rgba(255,255,255,.10);
+  --text: rgba(255,255,255,.92);
+  --muted: rgba(255,255,255,.65);
+  --line: rgba(255,255,255,.12);
+  --shadow: 0 30px 80px rgba(0,0,0,.45);
+  --r: 22px;
+}
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  color:var(--text);
+  background:
+    radial-gradient(1200px 700px at 20% 10%, rgba(170,255,230,.18), transparent 60%),
+    radial-gradient(900px 600px at 80% 20%, rgba(120,150,255,.18), transparent 55%),
+    radial-gradient(1000px 600px at 60% 110%, rgba(255,140,180,.12), transparent 55%),
+    var(--bg);
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+
+.wrap{max-width:1100px;margin:0 auto;padding:28px 18px 70px}
+
+/* ---------- HEADER (original style) ---------- */
+header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:10px 0 26px;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:800;
+  letter-spacing:.2px;
+}
+.logo{
+  width:34px;
+  height:34px;
+  border-radius:10px;
+  background: url("icon.png") center/cover no-repeat;
+  box-shadow: 0 18px 40px rgba(0,0,0,.35);
+}
+
+.nav{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.chip{
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.04);
+  padding:8px 10px;
+  border-radius:999px;
+  font-size:12px;
+  color: rgba(255,255,255,.70);
+  cursor:pointer;
+  user-select:none;
+}
+.chip:hover{ background: rgba(255,255,255,.07); }
+
+/* ---------- HERO ---------- */
+.hero{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:26px;
+  align-items:stretch;
+}
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr}
+}
+/* --- HERO Left: bessere Typo/Spacing --- */
+.card.left{
+  position: relative;
+  padding: 28px;
+  min-height: 520px;
+  background:
+    radial-gradient(900px 500px at 10% 0%, rgba(170,255,230,.10), transparent 55%),
+    radial-gradient(900px 500px at 90% 20%, rgba(120,150,255,.10), transparent 55%),
+    linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+}
+
+/* Subtile „Glow“-Kante */
+.card.left:before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius: var(--r);
+  padding:1px;
+  background: linear-gradient(135deg, rgba(170,255,230,.35), rgba(120,150,255,.22), rgba(255,140,180,.18));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events:none;
+  opacity:.65;
+}
+
+/* Chip: kürzer, eleganter */
+.card.left .chip{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 14px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.04);
+  color: rgba(255,255,255,.78);
+  font-weight:800;
+  letter-spacing:.2px;
+  font-size:12px;
+}
+
+.sub .lead{
+  display:block;
+  color: rgba(255,255,255,.86);
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+/* Headline: responsive & knackig */
+.card.left h1{
+  margin:18px 0 12px;
+  font-size: clamp(36px, 4.3vw, 56px);
+  line-height: 1.02;
+  letter-spacing: -1px;
+}
+
+/* Lesbarkeit: max. Zeilenlänge + schöner Abstand */
+.card.left p{
+  max-width: 58ch;
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.55;
+  color: rgba(255,255,255,.72);
+}
+
+/* Subtext: etwas kleiner */
+.card.left .fine{
+  margin-top: 18px;
+  font-size: 14px;
+  color: rgba(255,255,255,.60);
+  max-width: 64ch;
+}
+
+/* Hervorhebungen: nicht zu „fett“ */
+.card.left strong{
+  color: rgba(255,255,255,.92);
+  font-weight: 850;
+}
+
+/* CTA row */
+.ctaRow{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top: 18px;
+}
+
+.ctaPrimary{
+  border:none;
+  border-radius:999px;
+  padding:12px 14px;
+  font-weight:850;
+  cursor:pointer;
+  background: rgba(255,255,255,.92);
+  color: rgba(0,0,0,.92);
+}
+
+.ctaGhost{
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:999px;
+  padding:12px 14px;
+  font-weight:850;
+  cursor:pointer;
+  background: rgba(255,255,255,.05);
+  color: rgba(255,255,255,.88);
+}
+
+/* Mobile: weniger Luft */
+@media(max-width:900px){
+  .card.left{ min-height: unset; }
+}
+
+.card{
+  border:1px solid var(--line);
+  border-radius:var(--r);
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+
+.left{
+  padding:26px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  min-height:520px;
+}
+
+h1{
+  font-size:42px;
+  line-height:1.05;
+  margin:14px 0 10px;
+  letter-spacing:-.6px;
+}
+
+p{color:var(--muted);line-height:1.55}
+
+/* ---------- PHONE ---------- */
+.right{display:flex;align-items:center;justify-content:center;padding:18px}
+
+.phone{
+  width:320px;
+  max-width:100%;
+  border-radius:34px;
+  border:1px solid rgba(255,255,255,.16);
+  background:rgba(255,255,255,.06);
+  box-shadow: 0 40px 110px rgba(0,0,0,.55);
+  overflow:hidden;
+  animation: float 6s ease-in-out infinite;
+}
+@keyframes float{
+  0%,100%{transform: translateY(0)}
+  50%{transform: translateY(-10px)}
+}
+
+/* ✅ kleiner: obere Statusbar */
+.statusbar{
+  height:14px; /* vorher 22px */
+  border-bottom:1px solid rgba(255,255,255,.1);
+  background:rgba(255,255,255,.05)
+}
+
+.screen{height:520px;background:rgba(10,10,14,.8)}
+
+.screenInner{
+  height:100%;
+  padding:10px; /* ✅ weniger Padding (vorher 16px) */
+  display:flex;
+  flex-direction:column;
+  gap:8px; /* ✅ etwas kompakter (vorher 10px) */
+}
+
+/* ✅ kleiner: topbar */
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  padding:6px 8px; /* vorher 10px */
+  border-radius:12px; /* vorher 16px */
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.10);
+}
+
+.topTitle{font-size:12px;font-weight:850} /* vorher 13px */
+.topSub{font-size:10px;color:var(--muted);margin-top:2px} /* vorher 11px */
+
+.slides{
+  position:relative;
+  flex:1;
+  overflow:hidden;
+  border-radius:18px;
+}
+
+/* ✅ größer: weniger Rand im Slide */
+.slide{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  pointer-events:none;
+  transition: opacity .5s ease, transform .5s ease;
+  transform: translateY(10px) scale(.99);
+  padding:4px; /* vorher 10px 6px */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.slide.active{
+  opacity:1;
+  pointer-events:auto;
+  transform: translateY(0) scale(1);
+}
+
+/* ✅ größer: Bild füllt Fläche besser */
+.slideImg{
+  width:100%;
+  height:100%;
+  max-height:none; /* vorher max-height:100% */
+  object-fit:contain;
+  border-radius:12px; /* leicht kleiner, damit mehr Fläche wirkt */
+}
+
+.progress{
+  display:flex;
+  justify-content:center;
+  gap:7px;
+  padding:10px 0 4px;
+}
+.pDot{
+  width:8px;height:8px;border-radius:50%;
+  background:rgba(255,255,255,.3);
+  cursor:pointer;
+  border: 1px solid rgba(255,255,255,.10);
+}
+.pDot.active{background:white}
+
+.controls{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  padding-bottom:10px;
+}
+.smallBtn{
+  font-size:11px;
+  padding:8px 10px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.15);
+  background:rgba(255,255,255,.05);
+  color:white;
+  cursor:pointer;
+  font-weight:800;
+}
+
+/* ================================
+   DANKSAGUNG – CONTAINER
+================================ */
+#thanks .wrap{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 56px 40px;   /* ✅ mehr Luft links/rechts & oben/unten */
+}
+
+/* ================================
+   TITEL & EINLEITUNG
+================================ */
+#thanks .section-title{
+  font-size: 30px;
+  line-height: 1.15;
+  margin: 0 0 12px;
+  letter-spacing: -0.4px;
+}
+
+#thanks .section-sub{
+  max-width: none;        /* ✅ Satz erstreckt sich über volle Breite */
+  opacity: 0.85;
+  line-height: 1.7;
+  margin: 0 0 26px;
+  font-size: 18px;
+}
+
+/* ================================
+   GRID (2 SPALTEN)
+================================ */
+#thanks .grid-2{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 26px;             /* ✅ mehr Abstand zwischen den Karten */
+  align-items: stretch;
+}
+
+/* ================================
+   KARTEN (OBEN LINKS + RECHTS)
+================================ */
+#thanks .grid-2 .card{
+  border-radius: 26px;
+  padding: 36px 44px;    /* ✅ WICHTIG: viel mehr Innenraum links/rechts */
+  line-height: 1.75;
+  background:
+    radial-gradient(1200px 600px at 20% 0%, rgba(255,255,255,.06), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.03));
+  border: 1px solid rgba(255,255,255,.10);
+  box-shadow:
+    0 18px 50px rgba(0,0,0,.35),
+    inset 0 1px 0 rgba(255,255,255,.05);
+  backdrop-filter: blur(10px);
+}
+
+/* Absätze in Karten */
+#thanks .card p{
+  margin: 0;
+  color: rgba(255,255,255,.72);
+  font-size: 18px;
+}
+
+#thanks .card p + p{
+  margin-top: 16px;
+}
+
+/* Strong ruhiger */
+#thanks .card strong{
+  color: rgba(255,255,255,.90);
+  font-weight: 850;
+}
+
+/* ================================
+   ABSCHLUSSKARTE (UNTEN)
+================================ */
+#thanks .closing-wide{
+  grid-column: 1 / -1;
+  width: 100%;
+  max-width: none;
+  margin-top: 26px;
+  padding: 38px 46px;   /* ✅ fühlt sich „freier“ an als oben */
+  border-radius: 28px;
+  border: 1px solid rgba(170,255,230,.18);
+  background:
+    radial-gradient(900px 500px at 20% 0%, rgba(170,255,230,.10), transparent 60%),
+    rgba(170,255,230,.05);
+  opacity: 0.95;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+@media (max-width: 960px){
+  #thanks .grid-2{
+    grid-template-columns: 1fr;
+  }
+
+  #thanks .wrap{
+    padding: 44px 22px;
+  }
+
+  #thanks .grid-2 .card,
+  #thanks .closing-wide{
+    padding: 26px 22px;
+  }
+}
+
+
+/* ---------- SECTIONS (for nav targets) ---------- */
+.section{
+  margin-top: 22px;
+  padding: 18px;
+}
+.section h2{
+  margin:0 0 10px;
+  font-size: 20px;
+  letter-spacing:-.2px;
+}
+.section p{
+  margin:0;
+  color: rgba(255,255,255,.70);
+  line-height:1.55;
+}
+
+/* Contact form (optional) */
+.contactForm{ margin-top: 12px; }
+.contactGrid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+@media (max-width: 720px){
+  .contactGrid{ grid-template-columns: 1fr; }
+}
+.field{ display:flex; flex-direction:column; gap:7px; }
+.field span{
+  font-size: 12px;
+  color: rgba(255,255,255,.70);
+  font-weight: 800;
+  letter-spacing: .2px;
+}
+.field input, .field textarea{
+  width:100%;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.05);
+  color: rgba(255,255,255,.92);
+  padding: 12px 12px;
+  outline:none;
+  font-size: 13px;
+  line-height:1.45;
+}
+.field input:focus, .field textarea:focus{
+  border-color: rgba(170,255,230,.35);
+  box-shadow: 0 0 0 4px rgba(170,255,230,.10);
+}
+.btnRow{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 12px; }
+.btn{
+  border-radius:999px;
+  padding:11px 14px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.06);
+  color: var(--text);
+  font-weight:750;
+  font-size: 13px;
+  cursor:pointer;
+  transition: transform .15s ease, background .15s ease;
+}
+.btn:hover{transform: translateY(-1px)}
+.btn.primary{
+  border:none;
+  background: rgba(255,255,255,.92);
+  color: rgba(0,0,0,.92);
+}
+.mini{
+  margin-top:10px;
+  font-size:12px;
+  color: rgba(255,255,255,.60);
+}
+
+/* ---------- NEW: Two big blocks (image style) ---------- */
+.blockGrid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:16px;
+}
+@media(max-width:960px){
+  .blockGrid{ grid-template-columns: 1fr; }
+}
+.bigBlock{
+  border:1px solid var(--line);
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  box-shadow: 0 30px 80px rgba(0,0,0,.45);
+  padding: 22px;
+}
+.bigBlock h3{
+  margin:0 0 12px;
+  font-size: 40px;
+  line-height:1.05;
+  letter-spacing:-.6px;
+}
+@media(max-width:540px){
+  .bigBlock h3{ font-size: 30px; }
+}
+.bigBlock p{
+  margin:0 0 14px;
+  color: rgba(255,255,255,.65);
+  font-size: 16px;
+  line-height: 1.6;
+}
+.bigList{
+  margin: 8px 0 0;
+  padding-left: 18px;
+  color: rgba(255,255,255,.78);
+  font-size: 18px;
+  line-height: 1.55;
+}
+.bigList li{ margin: 10px 0; }
+.quote{
+  margin-top: 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(120,190,255,.22);
+  background: rgba(120,190,255,.08);
+  padding: 16px;
+  color: rgba(255,255,255,.80);
+  font-size: 18px;
+  line-height: 1.55;
+}
+.quote b{ color: rgba(255,255,255,.92); }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .phone{animation:none}
+  .slide{transition:none}
+  .btn{transition:none}
+}
+
+
+/* ---------- FOOTER ---------- */
+.footer{
+  margin-top: 28px;
+  border-top: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.02);
+}
+.foot{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  padding: 18px 18px;
+  color: rgba(255,255,255,.70);
+  font-size: 13px;
+}
+.footLinks{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+}
+.foot a{opacity:.85}
+.foot a:hover{opacity:1}
+@media (max-width: 720px){
+  .foot{flex-direction:column; align-items:flex-start;}
+}
+
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <!-- HEADER -->
+  <header>
+    <div class="brand">
+      <div class="logo"></div>
+      <div>
+        <div style="font-size:13px;">Acupet</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.65);margin-top:2px;">Diagnose → Therapie → Verlauf</div>
+      </div>
+    </div>
+
+    <div class="nav">
+      <div class="chip" onclick="scrollToId('thanks')">Danksagung</div>
+      <div class="chip" onclick="scrollToId('contact')">Kontakt & Early-Access</div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <div class="hero">
+
+    <div class="card left">
+      <span class="chip">Entwickelt von Tierärzten • praxisnah • strukturiert</span>
+    
+      <h1>Akupunktur.<br>Endlich einfach.</h1>
+    
+      <p class="sub">
+        <span class="lead">
+          Schritt für Schritt zur Diagnose. Der Weg zur individuell abgestimmten Therapie.
+        </span>
+        Setze chinesische Diagnostik <strong>so schnell wie möglich</strong> in die Praxis um:
+        Kombiniere <strong>Zunge</strong>, <strong>Puls</strong>, <strong>Shu-</strong> und
+        <strong>Mu-Diagnostik</strong>, stelle eine Diagnose nach TCM und wähle passende Punkte
+        direkt in der App aus.
+      </p>      
+    
+      <p class="fine">
+        Du arbeitest diagnosebasiert – mit Referenzen, die dich schnell ans Ziel bringen.
+      </p>
+    
+      <div class="mini">Tip: Hover auf die Demo rechts pausiert Auto-Play. Klick auf Dots springt.</div>
+    </div>
+    
+    
+
+    <!-- RIGHT -->
+    <div class="card right">
+      <div class="phone" id="phone">
+        <div class="statusbar"></div>
+        <div class="screen">
+          <div class="screenInner">
+
+            <div class="topbar">
+              <div>
+                <div class="topTitle" id="topTitle"></div>
+                <div class="topSub" id="topSub"></div>
+              </div>
+              <div aria-hidden="true" style="font-weight:850;">⌕</div>
+            </div>
+
+            <div class="slides" id="slides">
+              <div class="slide active" data-title="Hauptmenü" data-sub="Patient · Diagnose · Verlauf">
+                <img src="hauptmenue.jpg" class="slideImg" alt="Hauptmenü">
+              </div>
+
+              <div class="slide" data-title="Diagnose per Touch" data-sub="Shu · Puls · Zunge · Mu">
+                <img src="Zusammenfassung.jpg" class="slideImg" alt="Diagnose per Touch">
+              </div>
+
+              <div class="slide" data-title="Zusammenfassung" data-sub="Diagnose → Muster → Punkte">
+                <img src="zusammenfassung.jpg" class="slideImg" alt="Zusammenfassung">
+              </div>
+
+              <div class="slide" data-title="Punktreferenz" data-sub="Punkte finden in Sekunden">
+                <img src="Sp-3.jpg" class="slideImg" alt="SP-3">
+              </div>
+
+              <div class="slide" data-title="Regionale Übersicht" data-sub="Klare visuelle Darstellung">
+                <img src="elbow.jpg" class="slideImg" alt="Regionale Übersicht">
+              </div>
+            </div>
+
+            <div class="progress" id="progress"></div>
+
+            <div class="controls">
+              <button class="smallBtn" id="prevBtn" type="button">←</button>
+              <button class="smallBtn" id="playBtn" type="button">Pause</button>
+              <button class="smallBtn" id="nextBtn" type="button">→</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- NEW: TWO BLOCKS (inserted) -->
+  <div class="section" style="padding:0; margin-top:22px;">
+    <div class="blockGrid">
+      <div class="bigBlock">
+        <h3>Du hast es gelernt – aber im Alltag fehlt die Brücke.</h3>
+        <p>
+          Viele kennen das: Die Ausbildung ist top, doch im Praxisbetrieb fehlt eine klare Struktur,
+          um Diagnose und Punktwahl schnell und sicher umzusetzen.
+        </p>
+        <ul class="bigList">
+          <li>Diagnose dauert zu lange oder bleibt unsicher</li>
+          <li>Punktauswahl fühlt sich wie „Raten“ an</li>
+          <li>Kochbuchrezepte ohne echten Patientenbezug</li>
+        </ul>
+      </div>
+
+      <div class="bigBlock">
+        <h3>Genau dafür wurde diese App entwickelt.</h3>
+        <p>
+          Von einer Tierärztin, die selbst durch diese Lernkurve gegangen ist – mit dem Ziel,
+          Akupunktur <b>anwendbar</b> zu machen: strukturiert, schnell, reproduzierbar.
+        </p>
+        <div class="quote">
+          „Ich wollte endlich eine Lösung, mit der man das Erlernte sofort in echte
+          Behandlungsentscheidungen übersetzen kann – <b>ohne</b> ständig in Unterlagen zu blättern.“
+        </div>
+      </div>
+    </div>
+  </div>
+  <section id="thanks">
+    <div class="wrap">
+      <h2 class="section-title">Danksagung</h2>
+      <p class="section-sub">
+        Eine Idee entsteht nie allein. An dieser Stelle möchte ich mich herzlich bei den Personen
+        und Institutionen bedanken, die mich auf meinem Weg inspiriert und begleitet haben.
+      </p>
+  
+      <div class="grid-2">
+        <div class="card">
+          <p>
+            Mein besonderer Dank gilt <strong>Christina Eul-Matern</strong>, bei der ich in den Jahren
+            <strong>2025–2026</strong> den Fortgeschrittenenkurs besuchen durfte. In dieser Zeit konnte
+            ich sehr viel über Akupunktur lernen und mein Wissen wesentlich vertiefen.
+          </p>
+  
+          <p>
+            Ebenso danke ich der <strong>Chi University</strong>. Den Kurs absolvierte ich
+            <strong>2021 in der Schweiz</strong>, und <strong>2024</strong> hatte ich die Gelegenheit,
+            im <strong>Chi University Teaching Hospital in Florida</strong> zu sein. Dort konnte ich eindrücklich
+            erleben, wie chinesische und westliche Medizin sinnvoll miteinander verbunden werden.
+          </p>
+        </div>
+  
+        <div class="card">
+          <p>
+            Ein weiterer herzlicher Dank geht an <strong>Dolores Pertas Navarro</strong> vom
+            <strong>IVAS Spanien</strong>, bei der ich <strong>2020</strong> meinen ersten Kurs
+            absolvieren durfte.
+          </p>
+  
+          <p>
+            Nicht zuletzt danke ich der <strong>China Agricultural University in Peking</strong>,
+            wo ich erstmals mit der Akupunktur in Kontakt gekommen bin und der Grundstein für
+            meinen weiteren Weg gelegt wurde.
+          </p>
+  
+          <p>
+            Mein Dank gilt außerdem <strong>Tino Schuldt</strong> für die Einführung in neue
+            Technologien sowie die Unterstützung bei der Konzeption und Umsetzung dieser App.
+          </p>
+        </div>
+      </div>
+  
+      <div class="card closing-wide">
+        <p>
+          Abschließend möchte ich meinen <strong>vierbeinigen Patienten</strong> von Herzen danken. Sie motivieren mich jeden Tag, ihnen eine ganzheitliche Therapie anzubieten. Ich bin sehr dankbar dafür, sie auf ihrem Weg begleiten zu dürfen.
+        </p>
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- CONTACT -->
+  <div class="card section" id="contact">
+    <h2>Kontakt</h2>
+
+<p style="margin-top:6px;">
+  Wenn du dir den vergünstigten Early-Access-Preis sichern möchtest, hinterlasse uns eine Nachricht.
+  Sobald der Download verfügbar ist, bekommst du den Link direkt von uns.
+</p>
+
+<form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+  <input type="text" name="name" placeholder="Your Name" required>
+  <input type="email" name="email" placeholder="Your Email" required>
+  <textarea name="message" placeholder="Your Message" required></textarea>
+  <input type="hidden" name="_redirect" value="thank-you.html">
+  <button type="submit">Send</button>
+</form>
+
+
+<!-- notwendig für Netlify -->
+<input type="hidden" name="form-name" value="contact" />
+
+<!-- Honeypot gegen Bots -->
+<p style="display:none;">
+<label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+</p>
+
+<div class="contactGrid">
+<label class="field">
+<span>Name</span>
+<input type="text" name="name" placeholder="Dein Name" required />
+</label>
+
+<label class="field">
+<span>E-Mail</span>
+<input type="email" name="email" placeholder="name@mail.de" required />
+</label>
+</div>
+
+<label class="field" style="margin-top:12px;">
+<span>Nachricht</span>
+<textarea name="message"
+        rows="5"
+        placeholder="Feedback, Frage oder Early-Access-Wunsch…"
+        required></textarea>
+</label>
+
+<div class="btnRow">
+<button class="btn primary" type="submit">Nachricht senden</button>
+</div>
+
+<div class="mini" id="contactHint"></div>
+</form>
+
+  </div>
+</div>
+
+
+  <!-- FOOTER (am Ende, direkt vor </body> einfügen) -->
+  <footer class="footer">
+    <div class="wrap foot">
+      <div>© <span id="year"></span> Acupet • Junwei</div>
+      <div class="footLinks">
+        <a href="impressum.html">Impressum</a>
+        <a href="mailto:junwei.foehr@gmail.com">Kontakt</a>
+      </div>
+    </div>
+  </footer>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const y = document.getElementById("year");
+      if (y) y.textContent = new Date().getFullYear();
+    });
+  </script>  
+
+<script>
+
+  function scrollToId(id){
+    const el = document.getElementById(id);
+    if(!el) return;
+    el.scrollIntoView({behavior:"smooth", block:"start"});
+  }
+
+  // Phone slider
+  const slides = Array.from(document.querySelectorAll(".slide"));
+  const titleEl = document.getElementById("topTitle");
+  const subEl = document.getElementById("topSub");
+  const progressEl = document.getElementById("progress");
+
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const playBtn = document.getElementById("playBtn");
+  const phone = document.getElementById("phone");
+
+  let idx = 0;
+  let timer = null;
+  let playing = true;
+
+  function render(){
+    slides.forEach((s,i) => s.classList.toggle("active", i === idx));
+    titleEl.textContent = slides[idx].dataset.title || "";
+    subEl.textContent = slides[idx].dataset.sub || "";
+
+    progressEl.innerHTML = "";
+    slides.forEach((_, i) => {
+      const d = document.createElement("div");
+      d.className = "pDot" + (i === idx ? " active" : "");
+      d.addEventListener("click", () => go(i));
+      progressEl.appendChild(d);
+    });
+  }
+
+  function go(i){
+    idx = (i + slides.length) % slides.length;
+    render();
+  }
+  function next(){ go(idx + 1); }
+  function prev(){ go(idx - 1); }
+
+  function start(){
+    stop();
+    playing = true;
+    playBtn.textContent = "Pause";
+    timer = setInterval(next, 2600);
+  }
+
+  function stop(){
+    if (timer) clearInterval(timer);
+    timer = null;
+    playing = false;
+    playBtn.textContent = "Play";
+  }
+
+  prevBtn.addEventListener("click", () => { prev(); start(); });
+  nextBtn.addEventListener("click", () => { next(); start(); });
+  playBtn.addEventListener("click", () => { playing ? stop() : start(); });
+
+  // Pause on hover
+  phone.addEventListener("mouseenter", () => { if(playing) stop(); });
+  phone.addEventListener("mouseleave", () => { if(!playing) start(); });
+
+  render();
+  start();
+
+  function encode(data) {
+    return Object.keys(data)
+      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&");
+  }
+
+  async function sendContact(e){
+    e.preventDefault();
+
+    const form = e.target;
+    const hint = document.getElementById("contactHint");
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    const name = (data.name || "").toString().trim();
+    const email = (data.email || "").toString().trim();
+    const message = (data.message || "").toString().trim();
+
+    if(!name || !email || !message){
+      hint.textContent = "Bitte alle Felder ausfüllen.";
+      hint.style.color = "rgba(255,140,180,.95)";
+      return;
+    }
+
+    hint.textContent = "Senden…";
+    hint.style.color = "rgba(255,255,255,.75)";
+
+    try{
+      const res = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({
+          "form-name": form.getAttribute("name"),
+          ...data
+        })
+      });
+
+      if(res.ok){
+        hint.textContent = "Danke! Nachricht wurde gesendet.";
+        hint.style.color = "rgba(170,255,230,.95)";
+        form.reset();
+      }else{
+        hint.textContent = "Ups – das Senden hat nicht funktioniert. Bitte später erneut versuchen.";
+        hint.style.color = "rgba(255,140,180,.95)";
+      }
+    }catch(err){
+      hint.textContent = "Netzwerkfehler – bitte Verbindung prüfen und erneut versuchen.";
+      hint.style.color = "rgba(255,140,180,.95)";
+    }
+  }
+
+  // Jahr im Footer setzen
+  const y = document.getElementById("year");
+  if (y) y.textContent = new Date().getFullYear();
+
+</script>
+</body>
+</html>
