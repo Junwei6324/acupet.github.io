@@ -791,51 +791,51 @@ p{color:var(--muted);line-height:1.55}
   Sobald der Download verfügbar ist, bekommst du den Link direkt von uns.
 </p>
 
-<form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-  <input type="text" name="name" placeholder="Your Name" required>
-  <input type="email" name="email" placeholder="Your Email" required>
-  <textarea name="message" placeholder="Your Message" required></textarea>
-  <input type="hidden" name="_redirect" value="thank-you.html">
-  <button type="submit">Send</button>
-</form>
+<!-- CONTACT -->
+<div class="card section" id="contact">
+  <h2>Kontakt</h2>
 
+  <p style="margin-top:6px;">
+    Wenn du dir den vergünstigten Early-Access-Preis sichern möchtest, hinterlasse uns eine Nachricht.
+    Sobald der Download verfügbar ist, bekommst du den Link direkt von uns.
+  </p>
 
-<!-- notwendig für Netlify -->
-<input type="hidden" name="form-name" value="contact" />
+  <form class="contactForm"
+        action="https://formspree.io/f/YOUR_FORM_ID"
+        method="POST">
 
-<!-- Honeypot gegen Bots -->
-<p style="display:none;">
-<label>Don’t fill this out if you're human: <input name="bot-field" /></label>
-</p>
+    <div class="contactGrid">
+      <label class="field">
+        <span>Name</span>
+        <input type="text" name="name" placeholder="Dein Name" required />
+      </label>
 
-<div class="contactGrid">
-<label class="field">
-<span>Name</span>
-<input type="text" name="name" placeholder="Dein Name" required />
-</label>
+      <label class="field">
+        <span>E-Mail</span>
+        <input type="email" name="email" placeholder="name@mail.de" required />
+      </label>
+    </div>
 
-<label class="field">
-<span>E-Mail</span>
-<input type="email" name="email" placeholder="name@mail.de" required />
-</label>
-</div>
+    <label class="field" style="margin-top:12px;">
+      <span>Nachricht</span>
+      <textarea name="message"
+                rows="5"
+                placeholder="Feedback, Frage oder Early-Access-Wunsch…"
+                required></textarea>
+    </label>
 
-<label class="field" style="margin-top:12px;">
-<span>Nachricht</span>
-<textarea name="message"
-        rows="5"
-        placeholder="Feedback, Frage oder Early-Access-Wunsch…"
-        required></textarea>
-</label>
+    <!-- Optional: Betreff in Formspree -->
+    <input type="hidden" name="_subject" value="Acupet – Kontaktanfrage" />
 
-<div class="btnRow">
-<button class="btn primary" type="submit">Nachricht senden</button>
-</div>
+    <!-- Optional: nach dem Absenden auf deine Seite zurück -->
+    <input type="hidden" name="_redirect" value="https://DEINE-DOMAIN/thanks.html" />
 
-<div class="mini" id="contactHint"></div>
-</form>
+    <div class="btnRow">
+      <button class="btn primary" type="submit">Nachricht senden</button>
+    </div>
 
-  </div>
+    <div class="mini" id="contactHint"></div>
+  </form>
 </div>
 
 
@@ -925,58 +925,6 @@ p{color:var(--muted);line-height:1.55}
 
   render();
   start();
-
-  function encode(data) {
-    return Object.keys(data)
-      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-      .join("&");
-  }
-
-  async function sendContact(e){
-    e.preventDefault();
-
-    const form = e.target;
-    const hint = document.getElementById("contactHint");
-
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
-
-    const name = (data.name || "").toString().trim();
-    const email = (data.email || "").toString().trim();
-    const message = (data.message || "").toString().trim();
-
-    if(!name || !email || !message){
-      hint.textContent = "Bitte alle Felder ausfüllen.";
-      hint.style.color = "rgba(255,140,180,.95)";
-      return;
-    }
-
-    hint.textContent = "Senden…";
-    hint.style.color = "rgba(255,255,255,.75)";
-
-    try{
-      const res = await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode({
-          "form-name": form.getAttribute("name"),
-          ...data
-        })
-      });
-
-      if(res.ok){
-        hint.textContent = "Danke! Nachricht wurde gesendet.";
-        hint.style.color = "rgba(170,255,230,.95)";
-        form.reset();
-      }else{
-        hint.textContent = "Ups – das Senden hat nicht funktioniert. Bitte später erneut versuchen.";
-        hint.style.color = "rgba(255,140,180,.95)";
-      }
-    }catch(err){
-      hint.textContent = "Netzwerkfehler – bitte Verbindung prüfen und erneut versuchen.";
-      hint.style.color = "rgba(255,140,180,.95)";
-    }
-  }
 
   // Jahr im Footer setzen
   const y = document.getElementById("year");
