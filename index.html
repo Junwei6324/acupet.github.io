@@ -642,8 +642,6 @@ p{color:var(--muted);line-height:1.55}
       <p class="fine">
         Du arbeitest diagnosebasiert – mit Referenzen, die dich schnell ans Ziel bringen.
       </p>
-    
-      <div class="mini">Tip: Hover auf die Demo pausiert Auto-Play. Klick auf Dots springt.</div>
     </div>
     
     
@@ -909,13 +907,6 @@ p{color:var(--muted);line-height:1.55}
   prevBtn.addEventListener("click", () => { prev(); start(); });
   nextBtn.addEventListener("click", () => { next(); start(); });
   playBtn.addEventListener("click", () => { playing ? stop() : start(); });
-
-  // Pause on hover
-  phone.addEventListener("mouseenter", () => { if(playing) stop(); });
-  phone.addEventListener("mouseleave", () => { if(!playing) start(); });
-
-  render();
-  start();
 
   // Jahr im Footer setzen
   const y = document.getElementById("year");
