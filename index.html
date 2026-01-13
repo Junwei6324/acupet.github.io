@@ -3,9 +3,10 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title> Acupet – Landing Demo</title>
+<title>Acupet – Landing Demo</title>
 
 <style>
+/* (Dein gesamtes CSS bleibt unverändert) */
 :root{
   --bg:#0b0c10;
   --panel: rgba(255,255,255,.06);
@@ -17,7 +18,6 @@
   --r: 22px;
 }
 *{box-sizing:border-box}
-
 body{
   margin:0;
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
@@ -30,10 +30,7 @@ body{
   overflow-x:hidden;
 }
 a{color:inherit;text-decoration:none}
-
 .wrap{max-width:1100px;margin:0 auto;padding:28px 18px 70px}
-
-/* ---------- HEADER (original style) ---------- */
 header{
   display:flex;
   align-items:center;
@@ -55,7 +52,6 @@ header{
   background: url("icon.png") center/cover no-repeat;
   box-shadow: 0 18px 40px rgba(0,0,0,.35);
 }
-
 .nav{
   display:flex;
   gap:10px;
@@ -74,7 +70,6 @@ header{
 }
 .chip:hover{ background: rgba(255,255,255,.07); }
 
-/* ---------- HERO ---------- */
 .hero{
   display:grid;
   grid-template-columns:1.05fr .95fr;
@@ -84,7 +79,6 @@ header{
 @media(max-width:900px){
   .hero{grid-template-columns:1fr}
 }
-/* --- HERO Left: bessere Typo/Spacing --- */
 .card.left{
   position: relative;
   padding: 28px;
@@ -94,8 +88,6 @@ header{
     radial-gradient(900px 500px at 90% 20%, rgba(120,150,255,.10), transparent 55%),
     linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
 }
-
-/* Subtile „Glow“-Kante */
 .card.left:before{
   content:"";
   position:absolute;
@@ -109,8 +101,6 @@ header{
   pointer-events:none;
   opacity:.65;
 }
-
-/* Chip: kürzer, eleganter */
 .card.left .chip{
   display:inline-flex;
   align-items:center;
@@ -124,23 +114,18 @@ header{
   letter-spacing:.2px;
   font-size:12px;
 }
-
 .sub .lead{
   display:block;
   color: rgba(255,255,255,.86);
   font-weight: 800;
   margin-bottom: 10px;
 }
-
-/* Headline: responsive & knackig */
 .card.left h1{
   margin:18px 0 12px;
   font-size: clamp(36px, 4.3vw, 56px);
   line-height: 1.02;
   letter-spacing: -1px;
 }
-
-/* Lesbarkeit: max. Zeilenlänge + schöner Abstand */
 .card.left p{
   max-width: 58ch;
   margin: 0;
@@ -148,29 +133,22 @@ header{
   line-height: 1.55;
   color: rgba(255,255,255,.72);
 }
-
-/* Subtext: etwas kleiner */
 .card.left .fine{
   margin-top: 18px;
   font-size: 14px;
   color: rgba(255,255,255,.60);
   max-width: 64ch;
 }
-
-/* Hervorhebungen: nicht zu „fett“ */
 .card.left strong{
   color: rgba(255,255,255,.92);
   font-weight: 850;
 }
-
-/* CTA row */
 .ctaRow{
   display:flex;
   gap:10px;
   flex-wrap:wrap;
   margin-top: 18px;
 }
-
 .ctaPrimary{
   border:none;
   border-radius:999px;
@@ -180,7 +158,6 @@ header{
   background: rgba(255,255,255,.92);
   color: rgba(0,0,0,.92);
 }
-
 .ctaGhost{
   border:1px solid rgba(255,255,255,.16);
   border-radius:999px;
@@ -190,12 +167,9 @@ header{
   background: rgba(255,255,255,.05);
   color: rgba(255,255,255,.88);
 }
-
-/* Mobile: weniger Luft */
 @media(max-width:900px){
   .card.left{ min-height: unset; }
 }
-
 .card{
   border:1px solid var(--line);
   border-radius:var(--r);
@@ -203,7 +177,6 @@ header{
   box-shadow:var(--shadow);
   overflow:hidden;
 }
-
 .left{
   padding:26px;
   display:flex;
@@ -211,19 +184,15 @@ header{
   justify-content:center;
   min-height:520px;
 }
-
 h1{
   font-size:42px;
   line-height:1.05;
   margin:14px 0 10px;
   letter-spacing:-.6px;
 }
-
 p{color:var(--muted);line-height:1.55}
 
-/* ---------- PHONE ---------- */
 .right{display:flex;align-items:center;justify-content:center;padding:18px}
-
 .phone{
   width:320px;
   max-width:100%;
@@ -238,45 +207,35 @@ p{color:var(--muted);line-height:1.55}
   0%,100%{transform: translateY(0)}
   50%{transform: translateY(-10px)}
 }
-
-/* ✅ kleiner: obere Statusbar */
 .statusbar{
-  height:14px; /* vorher 22px */
+  height:14px;
   border-bottom:1px solid rgba(255,255,255,.1);
   background:rgba(255,255,255,.05)
 }
-
 .screen{height:520px;background:rgba(10,10,14,.8)}
-
 .screenInner{
   height:100%;
-  padding:10px; /* ✅ weniger Padding (vorher 16px) */
+  padding:10px;
   display:flex;
   flex-direction:column;
-  gap:8px; /* ✅ etwas kompakter (vorher 10px) */
+  gap:8px;
 }
-
-/* ✅ kleiner: topbar */
 .topbar{
   display:flex;
   justify-content:space-between;
-  padding:6px 8px; /* vorher 10px */
-  border-radius:12px; /* vorher 16px */
+  padding:6px 8px;
+  border-radius:12px;
   background:rgba(255,255,255,.06);
   border:1px solid rgba(255,255,255,.10);
 }
-
-.topTitle{font-size:12px;font-weight:850} /* vorher 13px */
-.topSub{font-size:10px;color:var(--muted);margin-top:2px} /* vorher 11px */
-
+.topTitle{font-size:12px;font-weight:850}
+.topSub{font-size:10px;color:var(--muted);margin-top:2px}
 .slides{
   position:relative;
   flex:1;
   overflow:hidden;
   border-radius:18px;
 }
-
-/* ✅ größer: weniger Rand im Slide */
 .slide{
   position:absolute;
   inset:0;
@@ -284,7 +243,7 @@ p{color:var(--muted);line-height:1.55}
   pointer-events:none;
   transition: opacity .5s ease, transform .5s ease;
   transform: translateY(10px) scale(.99);
-  padding:4px; /* vorher 10px 6px */
+  padding:4px;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -294,16 +253,13 @@ p{color:var(--muted);line-height:1.55}
   pointer-events:auto;
   transform: translateY(0) scale(1);
 }
-
-/* ✅ größer: Bild füllt Fläche besser */
 .slideImg{
   width:100%;
   height:100%;
-  max-height:none; /* vorher max-height:100% */
+  max-height:none;
   object-fit:contain;
-  border-radius:12px; /* leicht kleiner, damit mehr Fläche wirkt */
+  border-radius:12px;
 }
-
 .progress{
   display:flex;
   justify-content:center;
@@ -317,7 +273,6 @@ p{color:var(--muted);line-height:1.55}
   border: 1px solid rgba(255,255,255,.10);
 }
 .pDot.active{background:white}
-
 .controls{
   display:flex;
   justify-content:center;
@@ -335,49 +290,33 @@ p{color:var(--muted);line-height:1.55}
   font-weight:800;
 }
 
-/* ================================
-   DANKSAGUNG – CONTAINER
-================================ */
 #thanks .wrap{
   max-width: 1100px;
   margin: 0 auto;
-  padding: 56px 40px;   /* ✅ mehr Luft links/rechts & oben/unten */
+  padding: 56px 40px;
 }
-
-/* ================================
-   TITEL & EINLEITUNG
-================================ */
 #thanks .section-title{
   font-size: 30px;
   line-height: 1.15;
   margin: 0 0 12px;
   letter-spacing: -0.4px;
 }
-
 #thanks .section-sub{
-  max-width: none;        /* ✅ Satz erstreckt sich über volle Breite */
+  max-width: none;
   opacity: 0.85;
   line-height: 1.7;
   margin: 0 0 26px;
   font-size: 18px;
 }
-
-/* ================================
-   GRID (2 SPALTEN)
-================================ */
 #thanks .grid-2{
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 26px;             /* ✅ mehr Abstand zwischen den Karten */
+  gap: 26px;
   align-items: stretch;
 }
-
-/* ================================
-   KARTEN (OBEN LINKS + RECHTS)
-================================ */
 #thanks .grid-2 .card{
   border-radius: 26px;
-  padding: 36px 44px;    /* ✅ WICHTIG: viel mehr Innenraum links/rechts */
+  padding: 36px 44px;
   line-height: 1.75;
   background:
     radial-gradient(1200px 600px at 20% 0%, rgba(255,255,255,.06), transparent 60%),
@@ -388,33 +327,24 @@ p{color:var(--muted);line-height:1.55}
     inset 0 1px 0 rgba(255,255,255,.05);
   backdrop-filter: blur(10px);
 }
-
-/* Absätze in Karten */
 #thanks .card p{
   margin: 0;
   color: rgba(255,255,255,.72);
   font-size: 18px;
 }
-
 #thanks .card p + p{
   margin-top: 16px;
 }
-
-/* Strong ruhiger */
 #thanks .card strong{
   color: rgba(255,255,255,.90);
   font-weight: 850;
 }
-
-/* ================================
-   ABSCHLUSSKARTE (UNTEN)
-================================ */
 #thanks .closing-wide{
   grid-column: 1 / -1;
   width: 100%;
   max-width: none;
   margin-top: 26px;
-  padding: 38px 46px;   /* ✅ fühlt sich „freier“ an als oben */
+  padding: 38px 46px;
   border-radius: 28px;
   border: 1px solid rgba(170,255,230,.18);
   background:
@@ -422,27 +352,12 @@ p{color:var(--muted);line-height:1.55}
     rgba(170,255,230,.05);
   opacity: 0.95;
 }
-
-/* ================================
-   RESPONSIVE
-================================ */
 @media (max-width: 960px){
-  #thanks .grid-2{
-    grid-template-columns: 1fr;
-  }
-
-  #thanks .wrap{
-    padding: 44px 22px;
-  }
-
-  #thanks .grid-2 .card,
-  #thanks .closing-wide{
-    padding: 26px 22px;
-  }
+  #thanks .grid-2{ grid-template-columns: 1fr; }
+  #thanks .wrap{ padding: 44px 22px; }
+  #thanks .grid-2 .card, #thanks .closing-wide{ padding: 26px 22px; }
 }
 
-
-/* ---------- SECTIONS (for nav targets) ---------- */
 .section{
   margin-top: 22px;
   padding: 18px;
@@ -457,8 +372,6 @@ p{color:var(--muted);line-height:1.55}
   color: rgba(255,255,255,.70);
   line-height:1.55;
 }
-
-/* Contact form (optional) */
 .contactForm{ margin-top: 12px; }
 .contactGrid{
   display:grid;
@@ -513,8 +426,6 @@ p{color:var(--muted);line-height:1.55}
   font-size:12px;
   color: rgba(255,255,255,.60);
 }
-
-/* ---------- NEW: Two big blocks (image style) ---------- */
 .blockGrid{
   display:grid;
   grid-template-columns: 1fr 1fr;
@@ -564,16 +475,12 @@ p{color:var(--muted);line-height:1.55}
   line-height: 1.55;
 }
 .quote b{ color: rgba(255,255,255,.92); }
-
-/* Reduced motion */
 @media (prefers-reduced-motion: reduce){
   .phone{animation:none}
   .slide{transition:none}
   .btn{transition:none}
 }
 
-
-/* ---------- FOOTER ---------- */
 .footer{
   margin-top: 28px;
   border-top: 1px solid rgba(255,255,255,.10);
@@ -598,6 +505,42 @@ p{color:var(--muted);line-height:1.55}
 @media (max-width: 720px){
   .foot{flex-direction:column; align-items:flex-start;}
 }
+.langWrap{ display:flex; align-items:center; }
+
+.langSelect{
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.04);
+  padding:8px 34px 8px 12px; /* rechts Platz für Pfeil */
+  border-radius:999px;
+  font-size:12px;
+  color: rgba(255,255,255,.80);
+  cursor:pointer;
+  font-weight:800;
+  letter-spacing:.2px;
+  outline:none;
+
+  /* native appearance reduzieren */
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  appearance:none;
+
+  /* Pfeil-Icon (CSS) */
+  background-image:
+    linear-gradient(45deg, transparent 50%, rgba(255,255,255,.75) 50%),
+    linear-gradient(135deg, rgba(255,255,255,.75) 50%, transparent 50%);
+  background-position:
+    calc(100% - 16px) 55%,
+    calc(100% - 11px) 55%;
+  background-size:5px 5px, 5px 5px;
+  background-repeat:no-repeat;
+}
+
+.langSelect:hover{ background-color: rgba(255,255,255,.07); }
+.langSelect:focus{
+  border-color: rgba(170,255,230,.35);
+  box-shadow: 0 0 0 4px rgba(170,255,230,.10);
+}
+
 
 </style>
 </head>
@@ -611,13 +554,24 @@ p{color:var(--muted);line-height:1.55}
       <div class="logo"></div>
       <div>
         <div style="font-size:13px;">Acupet</div>
-        <div style="font-size:11px;color:rgba(255,255,255,.65);margin-top:2px;">Diagnose → Therapie → Verlauf</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.65);margin-top:2px;" data-i18n="tagline">
+          Diagnose → Therapie → Verlauf
+        </div>
       </div>
     </div>
 
     <div class="nav">
-      <div class="chip" onclick="scrollToId('thanks')">Danksagung</div>
-      <div class="chip" onclick="scrollToId('contact')">Kontakt & Early-Access</div>
+      <div class="chip" onclick="scrollToId('thanks')" data-i18n="nav_thanks">Danksagung</div>
+      <div class="chip" onclick="scrollToId('contact')" data-i18n="nav_contact">Kontakt & Early-Access</div>
+      <div class="langWrap">
+        <select id="langSelect" class="langSelect" aria-label="Language">
+          <option value="de">Deutsch</option>
+          <option value="en">English</option>
+          <option value="zh">中文</option>
+          <option value="es">Español</option>
+          <option value="fr">Français</option>
+        </select>
+      </div>         
     </div>
   </header>
 
@@ -625,26 +579,27 @@ p{color:var(--muted);line-height:1.55}
   <div class="hero">
 
     <div class="card left">
-      <span class="chip">Entwickelt von Tierärzten • praxisnah • strukturiert</span>
-    
-      <h1>Akupunktur.<br>Endlich einfach.</h1>
-    
+      <span class="chip" data-i18n="hero_chip">Entwickelt von Tierärzten • praxisnah • strukturiert</span>
+
+      <h1 data-i18n="hero_h1">Akupunktur.<br>Endlich einfach.</h1>
+
       <p class="sub">
-        <span class="lead">
+        <span class="lead" data-i18n="hero_lead">
           Schritt für Schritt zur Diagnose. Der Weg zur individuell abgestimmten Therapie.
         </span>
-        Setze chinesische Diagnostik <strong>so schnell wie möglich</strong> in die Praxis um:
-        Kombiniere <strong>Zunge</strong>, <strong>Puls</strong>, <strong>Shu-</strong> und
-        <strong>Mu-Diagnostik</strong>, stelle eine Diagnose nach TCM und wähle passende Punkte
-        direkt in der App aus.
-      </p>      
-    
-      <p class="fine">
+        <span data-i18n="hero_body">
+          Setze chinesische Diagnostik <strong>so schnell wie möglich</strong> in die Praxis um:
+          Kombiniere <strong>Zunge</strong>, <strong>Puls</strong>, <strong>Shu-</strong> und
+          <strong>Mu-Diagnostik</strong>, stelle eine Diagnose nach TCM und wähle passende Punkte
+          direkt in der App aus.
+        </span>
+      </p>
+
+      <p class="fine" data-i18n="hero_fine">
         Du arbeitest diagnosebasiert – mit Referenzen, die dich schnell ans Ziel bringen.
       </p>
+
     </div>
-    
-    
 
     <!-- RIGHT -->
     <div class="card right">
@@ -662,33 +617,30 @@ p{color:var(--muted);line-height:1.55}
             </div>
 
             <div class="slides" id="slides">
-              <div class="slide active" data-title="Hauptmenü" data-sub="Patient · Diagnose · Verlauf">
-                <img src="Hauptmenue.jpg" class="slideImg" alt="Hauptmenü">
+              <!-- Die data-key-Attribute bleiben konstant, Text + Bild werden per i18n gesetzt -->
+              <div class="slide active" data-key="s0">
+                <img class="slideImg" alt="">
               </div>
-
-              <div class="slide" data-title="Diagnose per Touch" data-sub="Shu · Puls · Zunge · Mu">
-                <img src="Diagnostik.jpg" class="slideImg" alt="Diagnose per Touch">
+              <div class="slide" data-key="s1">
+                <img class="slideImg" alt="">
               </div>
-
-              <div class="slide" data-title="Zusammenfassung" data-sub="Diagnose → Muster → Punkte">
-                <img src="Zusammenfassung.jpg" class="slideImg" alt="Zusammenfassung">
+              <div class="slide" data-key="s2">
+                <img class="slideImg" alt="">
               </div>
-
-              <div class="slide" data-title="Punktreferenz" data-sub="Punkte finden in Sekunden">
-                <img src="SP-3.jpg" class="slideImg" alt="SP-3">
+              <div class="slide" data-key="s3">
+                <img class="slideImg" alt="">
               </div>
-
-              <div class="slide" data-title="Regionale Übersicht" data-sub="Klare visuelle Darstellung">
-                <img src="Elbow.jpg" class="slideImg" alt="Regionale Übersicht">
+              <div class="slide" data-key="s4">
+                <img class="slideImg" alt="">
               </div>
             </div>
 
             <div class="progress" id="progress"></div>
 
             <div class="controls">
-              <button class="smallBtn" id="prevBtn" type="button">←</button>
-              <button class="smallBtn" id="playBtn" type="button">Pause</button>
-              <button class="smallBtn" id="nextBtn" type="button">→</button>
+              <button class="smallBtn" id="prevBtn" type="button" data-i18n="btn_prev">←</button>
+              <button class="smallBtn" id="playBtn" type="button" data-i18n="btn_pause">Pause</button>
+              <button class="smallBtn" id="nextBtn" type="button" data-i18n="btn_next">→</button>
             </div>
 
           </div>
@@ -698,163 +650,525 @@ p{color:var(--muted);line-height:1.55}
 
   </div>
 
-  <!-- NEW: TWO BLOCKS (inserted) -->
+  <!-- TWO BLOCKS -->
   <div class="section" style="padding:0; margin-top:22px;">
     <div class="blockGrid">
       <div class="bigBlock">
-        <h3>Du hast es gelernt – aber im Alltag fehlt die Brücke.</h3>
-        <p>
+        <h3 data-i18n="block1_h">Du hast es gelernt – aber im Alltag fehlt die Brücke.</h3>
+        <p data-i18n="block1_p">
           Viele kennen das: Die Ausbildung ist top, doch im Praxisbetrieb fehlt eine klare Struktur,
           um Diagnose und Punktwahl schnell und sicher umzusetzen.
         </p>
         <ul class="bigList">
-          <li>Diagnose dauert zu lange oder bleibt unsicher</li>
-          <li>Punktauswahl fühlt sich wie „Raten“ an</li>
-          <li>Kochbuchrezepte ohne echten Patientenbezug</li>
+          <li data-i18n="block1_li1">Diagnose dauert zu lange oder bleibt unsicher</li>
+          <li data-i18n="block1_li2">Punktauswahl fühlt sich wie „Raten“ an</li>
+          <li data-i18n="block1_li3">Kochbuchrezepte ohne echten Patientenbezug</li>
         </ul>
       </div>
 
       <div class="bigBlock">
-        <h3>Genau dafür wurde diese App entwickelt.</h3>
-        <p>
+        <h3 data-i18n="block2_h">Genau dafür wurde diese App entwickelt.</h3>
+        <p data-i18n="block2_p">
           Von einer Tierärztin, die selbst durch diese Lernkurve gegangen ist – mit dem Ziel,
           Akupunktur <b>anwendbar</b> zu machen: strukturiert, schnell, reproduzierbar.
         </p>
-        <div class="quote">
+        <div class="quote" data-i18n="block2_q">
           „Ich wollte endlich eine Lösung, mit der man das Erlernte sofort in echte
           Behandlungsentscheidungen übersetzen kann – <b>ohne</b> ständig in Unterlagen zu blättern.“
         </div>
       </div>
     </div>
   </div>
+
+  <!-- THANKS -->
   <section id="thanks">
     <div class="wrap">
-      <h2 class="section-title">Danksagung</h2>
-      <p class="section-sub">
+      <h2 class="section-title" data-i18n="thanks_h">Danksagung</h2>
+      <p class="section-sub" data-i18n="thanks_sub">
         Eine Idee entsteht nie allein. An dieser Stelle möchte ich mich herzlich bei den Personen
         und Institutionen bedanken, die mich auf meinem Weg inspiriert und begleitet haben.
       </p>
-  
+
       <div class="grid-2">
         <div class="card">
-          <p>
+          <p data-i18n="thanks_p1">
             Mein besonderer Dank gilt <strong>Christina Eul-Matern</strong>, bei der ich in den Jahren
             <strong>2025–2026</strong> den Fortgeschrittenenkurs besuchen durfte. In dieser Zeit konnte
             ich sehr viel über Akupunktur lernen und mein Wissen wesentlich vertiefen.
           </p>
-  
-          <p>
+
+          <p data-i18n="thanks_p2">
             Ebenso danke ich der <strong>Chi University</strong>. Den Kurs absolvierte ich
             <strong>2021 in der Schweiz</strong>, und <strong>2024</strong> hatte ich die Gelegenheit,
             im <strong>Chi University Teaching Hospital in Florida</strong> zu sein. Dort konnte ich eindrücklich
             erleben, wie chinesische und westliche Medizin sinnvoll miteinander verbunden werden.
           </p>
         </div>
-  
+
         <div class="card">
-          <p>
+          <p data-i18n="thanks_p3">
             Ein weiterer herzlicher Dank geht an <strong>Dolores Pertas Navarro</strong> vom
             <strong>IVAS Spanien</strong>, bei der ich <strong>2020</strong> meinen ersten Kurs
             absolvieren durfte.
           </p>
-  
-          <p>
+
+          <p data-i18n="thanks_p4">
             Nicht zuletzt danke ich der <strong>China Agricultural University in Peking</strong>,
             wo ich erstmals mit der Akupunktur in Kontakt gekommen bin und der Grundstein für
             meinen weiteren Weg gelegt wurde.
           </p>
-  
-          <p>
+
+          <p data-i18n="thanks_p5">
             Mein Dank gilt außerdem <strong>Tino Schuldt</strong> für die Einführung in neue
             Technologien sowie die Unterstützung bei der Konzeption und Umsetzung dieser App.
           </p>
         </div>
       </div>
-  
+
       <div class="card closing-wide">
-        <p>
+        <p data-i18n="thanks_p6">
           Abschließend möchte ich meinen <strong>vierbeinigen Patienten</strong> von Herzen danken. Sie motivieren mich jeden Tag, ihnen eine ganzheitliche Therapie anzubieten. Ich bin sehr dankbar dafür, sie auf ihrem Weg begleiten zu dürfen.
         </p>
       </div>
     </div>
   </section>
-  
 
-<!-- CONTACT -->
-<div class="card section" id="contact">
-  <h2>Kontakt</h2>
+  <!-- CONTACT -->
+  <div class="card section" id="contact">
+    <h2 data-i18n="contact_h">Kontakt</h2>
 
-  <p style="margin-top:6px;">
-    Wenn du dir den vergünstigten Early-Access-Preis sichern möchtest, hinterlasse uns eine Nachricht.
-    Sobald der Download verfügbar ist, bekommst du den Link direkt von uns.
-  </p>
+    <p style="margin-top:6px;" data-i18n="contact_p">
+      Wenn du dir den vergünstigten Early-Access-Preis sichern möchtest, hinterlasse uns eine Nachricht.
+      Sobald der Download verfügbar ist, bekommst du den Link direkt von uns.
+    </p>
 
-  <form class="contactForm"
-        action="https://formspree.io/f/mlggrqwr"
-        method="POST">
+    <form class="contactForm"
+          action="https://formspree.io/f/mlggrqwr"
+          method="POST">
 
-    <div class="contactGrid">
-      <label class="field">
-        <span>Name</span>
-        <input type="text" name="name" placeholder="Dein Name" required />
+      <div class="contactGrid">
+        <label class="field">
+          <span data-i18n="contact_name">Name</span>
+          <input type="text" name="name" placeholder="Dein Name" required data-i18n-ph="contact_name_ph"/>
+        </label>
+
+        <label class="field">
+          <span data-i18n="contact_email">E-Mail</span>
+          <input type="email" name="email" placeholder="name@mail.de" required data-i18n-ph="contact_email_ph"/>
+        </label>
+      </div>
+
+      <label class="field" style="margin-top:12px;">
+        <span data-i18n="contact_msg">Nachricht</span>
+        <textarea name="message"
+                  rows="5"
+                  placeholder="Feedback, Frage oder Early-Access-Wunsch…"
+                  required
+                  data-i18n-ph="contact_msg_ph"></textarea>
       </label>
 
-      <label class="field">
-        <span>E-Mail</span>
-        <input type="email" name="email" placeholder="name@mail.de" required />
-      </label>
-    </div>
+      <input type="hidden" name="_subject" value="Acupet – Kontaktanfrage" id="formSubject" />
+      <input type="hidden" name="_redirect" value="https://DEINE-DOMAIN/thanks.html" id="formRedirect" />
 
-    <label class="field" style="margin-top:12px;">
-      <span>Nachricht</span>
-      <textarea name="message"
-                rows="5"
-                placeholder="Feedback, Frage oder Early-Access-Wunsch…"
-                required></textarea>
-    </label>
+      <div class="btnRow">
+        <button class="btn primary" type="submit" data-i18n="contact_send">Nachricht senden</button>
+      </div>
 
-    <!-- Optional: Betreff in Formspree -->
-    <input type="hidden" name="_subject" value="Acupet – Kontaktanfrage" />
+      <div class="mini" id="contactHint"></div>
+    </form>
+  </div>
 
-    <!-- Optional: nach dem Absenden auf deine Seite zurück -->
-    <input type="hidden" name="_redirect" value="https://DEINE-DOMAIN/thanks.html" />
-
-    <div class="btnRow">
-      <button class="btn primary" type="submit">Nachricht senden</button>
-    </div>
-
-    <div class="mini" id="contactHint"></div>
-  </form>
-</div>
-
-
-  <!-- FOOTER (am Ende, direkt vor </body> einfügen) -->
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="wrap foot">
       <div>© <span id="year"></span> Acupet • Junwei</div>
       <div class="footLinks">
-        <a href="Impressum.html">Impressum</a>
-        <a href="mailto:akupet.vet@gmail.com">Kontakt</a>
+        <a href="Impressum.html" data-i18n="footer_imprint">Impressum</a>
+        <a href="mailto:junwei.foehr@gmail.com" data-i18n="footer_contact">Kontakt</a>
       </div>
     </div>
   </footer>
-  
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const y = document.getElementById("year");
-      if (y) y.textContent = new Date().getFullYear();
-    });
-  </script>  
 
 <script>
-
   function scrollToId(id){
     const el = document.getElementById(id);
     if(!el) return;
     el.scrollIntoView({behavior:"smooth", block:"start"});
   }
 
-  // Phone slider
+  // ---------- i18n ----------
+  const I18N = {
+    de: {
+      langName: "Deutsch",
+      tagline: "Diagnose → Therapie → Verlauf",
+      nav_thanks: "Danksagung",
+      nav_contact: "Kontakt & Early-Access",
+      hero_chip: "Entwickelt von Tierärzten • praxisnah • strukturiert",
+      hero_h1: "Akupunktur.<br>Endlich einfach.",
+      hero_lead: "Schritt für Schritt zur Diagnose. Der Weg zur individuell abgestimmten Therapie.",
+      hero_body: `Setze chinesische Diagnostik <strong>so schnell wie möglich</strong> in die Praxis um:
+        Kombiniere <strong>Zunge</strong>, <strong>Puls</strong>, <strong>Shu-</strong> und
+        <strong>Mu-Diagnostik</strong>, stelle eine Diagnose nach TCM und wähle passende Punkte
+        direkt in der App aus.`,
+      hero_fine: "Du arbeitest diagnosebasiert – mit Referenzen, die dich schnell ans Ziel bringen.",
+      hero_tip: "Tip: Hover auf die Demo pausiert Auto-Play. Klick auf Dots springt.",
+      btn_prev: "←",
+      btn_pause: "Pause",
+      btn_play: "Play",
+      btn_next: "→",
+
+      block1_h: "Du hast es gelernt – aber im Alltag fehlt die Brücke.",
+      block1_p: "Viele kennen das: Die Ausbildung ist top, doch im Praxisbetrieb fehlt eine klare Struktur, um Diagnose und Punktwahl schnell und sicher umzusetzen.",
+      block1_li1: "Diagnose dauert zu lange oder bleibt unsicher",
+      block1_li2: "Punktauswahl fühlt sich wie „Raten“ an",
+      block1_li3: "Kochbuchrezepte ohne echten Patientenbezug",
+
+      block2_h: "Genau dafür wurde diese App entwickelt.",
+      block2_p: "Von einer Tierärztin, die selbst durch diese Lernkurve gegangen ist – mit dem Ziel, Akupunktur <b>anwendbar</b> zu machen: strukturiert, schnell, reproduzierbar.",
+      block2_q: "„Ich wollte endlich eine Lösung, mit der man das Erlernte sofort in echte Behandlungsentscheidungen übersetzen kann – <b>ohne</b> ständig in Unterlagen zu blättern.“",
+
+      thanks_h: "Danksagung",
+      thanks_sub: "Eine Idee entsteht nie allein. An dieser Stelle möchte ich mich herzlich bei den Personen und Institutionen bedanken, die mich auf meinem Weg inspiriert und begleitet haben.",
+      thanks_p1: `Mein besonderer Dank gilt <strong>Christina Eul-Matern</strong>, bei der ich in den Jahren <strong>2025–2026</strong> den Fortgeschrittenenkurs besuchen durfte. In dieser Zeit konnte ich sehr viel über Akupunktur lernen und mein Wissen wesentlich vertiefen.`,
+      thanks_p2: `Ebenso danke ich der <strong>Chi University</strong>. Den Kurs absolvierte ich <strong>2021 in der Schweiz</strong>, und <strong>2024</strong> hatte ich die Gelegenheit, im <strong>Chi University Teaching Hospital in Florida</strong> zu sein. Dort konnte ich eindrücklich erleben, wie chinesische und westliche Medizin sinnvoll miteinander verbunden werden.`,
+      thanks_p3: `Ein weiterer herzlicher Dank geht an <strong>Dolores Pertas Navarro</strong> vom <strong>IVAS Spanien</strong>, bei der ich <strong>2020</strong> meinen ersten Kurs absolvieren durfte.`,
+      thanks_p4: `Nicht zuletzt danke ich der <strong>China Agricultural University in Peking</strong>, wo ich erstmals mit der Akupunktur in Kontakt gekommen bin und der Grundstein für meinen weiteren Weg gelegt wurde.`,
+      thanks_p5: `Mein Dank gilt außerdem <strong>Tino Schuldt</strong> für die Einführung in neue Technologien sowie die Unterstützung bei der Konzeption und Umsetzung dieser App.`,
+      thanks_p6: `Abschließend möchte ich meinen <strong>vierbeinigen Patienten</strong> von Herzen danken. Sie motivieren mich jeden Tag, ihnen eine ganzheitliche Therapie anzubieten. Ich bin sehr dankbar dafür, sie auf ihrem Weg begleiten zu dürfen.`,
+
+      contact_h: "Kontakt",
+      contact_p: "Wenn du dir den vergünstigten Early-Access-Preis sichern möchtest, hinterlasse uns eine Nachricht. Sobald der Download verfügbar ist, bekommst du den Link direkt von uns.",
+      contact_name: "Name",
+      contact_email: "E-Mail",
+      contact_msg: "Nachricht",
+      contact_name_ph: "Dein Name",
+      contact_email_ph: "name@mail.de",
+      contact_msg_ph: "Feedback, Frage oder Early-Access-Wunsch…",
+      contact_send: "Nachricht senden",
+
+      footer_imprint: "Impressum",
+      footer_contact: "Kontakt",
+
+      form_subject: "Acupet – Kontaktanfrage",
+      form_redirect: "https://DEINE-DOMAIN/thanks.html",
+
+      slides: {
+        s0: { title: "Hauptmenü", sub: "Patient · Diagnose · Verlauf", img: "Hauptmenue.jpg", alt: "Hauptmenü" },
+        s1: { title: "Diagnose per Touch", sub: "Shu · Puls · Zunge · Mu", img: "Diagnostik.jpg", alt: "Diagnose per Touch" },
+        s2: { title: "Zusammenfassung", sub: "Diagnose → Muster → Punkte", img: "Zusammenfassung.jpg", alt: "Zusammenfassung" },
+        s3: { title: "Punktreferenz", sub: "Punkte finden in Sekunden", img: "SP-3.jpg", alt: "SP-3" },
+        s4: { title: "Regionale Übersicht", sub: "Klare visuelle Darstellung", img: "Elbow.jpg", alt: "Regionale Übersicht" }
+      }
+    },
+
+    en: {
+      langName: "English",
+      tagline: "Diagnosis → Therapy → Progress",
+      nav_thanks: "Acknowledgements",
+      nav_contact: "Contact & Early Access",
+      hero_chip: "Developed by veterinarians • practical • structured",
+      hero_h1: "Acupuncture.<br>Finally simple.",
+      hero_lead: "Step-by-step diagnosis. A path to an individually tailored therapy.",
+      hero_body: `Bring Chinese diagnostics into practice <strong>as quickly as possible</strong>:
+        combine <strong>tongue</strong>, <strong>pulse</strong>, <strong>Shu</strong> and
+        <strong>Mu diagnostics</strong>, create a TCM pattern diagnosis, and select the right points
+        directly in the app.`,
+      hero_fine: "Diagnosis-led work, with references that get you to your goal fast.",
+      btn_prev: "←",
+      btn_pause: "Pause",
+      btn_play: "Play",
+      btn_next: "→",
+
+      block1_h: "You learned it — but daily practice is missing the bridge.",
+block1_p: "Many practitioners know the feeling: the training is excellent, but everyday clinical work lacks a clear structure to turn diagnosis and point selection into something fast and reliable.",
+block1_li1: "Diagnosis takes too long or feels uncertain",
+block1_li2: "Point selection feels like guessing",
+block1_li3: "Cookbook recipes that don’t cater to individual patients",
+
+
+block2_h: "This app was built to overcome exactly these challenges.",
+block2_p: "Created by a veterinarian who went through the same learning curve, with one goal: to make acupuncture <b>usable</b> in practice: structured, fast, and effective.",
+block2_q: "“I wanted a solution that turns what you’ve learned into real treatment decisions — <b>without</b> constantly flipping through books.”",
+
+thanks_h: "Acknowledgements",
+thanks_sub: "An idea is never created alone. I would like to sincerely thank the people and institutions who inspired and supported me along my journey.",
+thanks_p1: "My special thanks go to <strong>Christina Eul-Matern</strong>, whose advanced course I attended in <strong>2025–2026</strong>. During this time, I gained extensive insight into acupuncture and significantly deepened my knowledge.",
+thanks_p2: "I would also like to thank <strong>Chi University</strong>. I completed the course in <strong>2021 in Switzerland</strong>, and in <strong>2024</strong> I had the opportunity to train at the <strong>Chi University Teaching Hospital in Florida</strong>. There, I experienced firsthand how Chinese and Western medicine can be meaningfully integrated.",
+thanks_p3: "Another heartfelt thank-you goes to <strong>Dolores Pertas Navarro</strong> from <strong>IVAS Spain</strong>, with whom I completed my first acupuncture course in <strong>2020</strong>.",
+thanks_p4: "I also thank the <strong>China Agricultural University in Beijing</strong>, where I first came into contact with acupuncture and laid the foundation for my future path.",
+thanks_p5: "I am grateful to <strong>Tino Schuldt</strong> for introducing me to new technologies and for his support in the concept and implementation of this app.",
+thanks_p5b: "I would also like to thank <strong>Claire Coates</strong> for her valuable ideas and dedicated support in the <strong>UK marketing</strong>.",
+thanks_p6: "Finally, I want to thank my <strong>four-legged patients</strong> from the bottom of my heart. They motivate me every day to offer holistic therapy, and I am deeply grateful to accompany them on their journey.",
+
+      contact_h: "Contact",
+      contact_p: "If you’d like to secure the discounted early-access price, leave us a message. As soon as the download is available, you’ll receive the link directly from us.",
+      contact_name: "Name",
+      contact_email: "Email",
+      contact_msg: "Message",
+      contact_name_ph: "Your name",
+      contact_email_ph: "name@mail.com",
+      contact_msg_ph: "Feedback, question, or early-access request…",
+      contact_send: "Send message",
+
+      footer_imprint: "Imprint",
+      footer_contact: "Contact",
+
+      form_subject: "Acupet – Contact request",
+      form_redirect: "https://YOUR-DOMAIN/thanks.html",
+
+      slides: {
+        s0: { title: "Main menu", sub: "Patient · Diagnosis · Progress", img: "Hauptmenue.jpg", alt: "Main menu" },
+        s1: { title: "Tap-to-Diagnose", sub: "Shu · Pulse · Tongue · Mu", img: "Diagnostik.jpg", alt: "Touch diagnosis" },
+        s2: { title: "Summary", sub: "Diagnosis → Pattern → Points", img: "Zusammenfassung.jpg", alt: "Summary" },
+        s3: { title: "Point reference", sub: "Find points in seconds", img: "SP-3.jpg", alt: "Point reference" },
+        s4: { title: "Regional overview", sub: "Clear visual layout", img: "Elbow.jpg", alt: "Regional overview" }
+      }
+    },
+
+    zh: {
+      langName: "中文",
+      tagline: "诊断 → 治疗 → 随访",
+      nav_thanks: "致谢",
+      nav_contact: "联系/抢先体验",
+      hero_chip: "由兽医开发 • 贴近临床 • 结构清晰",
+      hero_h1: "小动物针灸。<br>本应如此简单。",
+      hero_lead: "一步步完成诊断，直达个体化治疗方案。",
+      hero_body: `<strong>快速</strong>将中兽医诊断应用于临床：
+结合<strong>舌诊</strong>、<strong>脉诊</strong>、<strong>背俞</strong>与<strong>募穴</strong>诊断，
+形成清晰的中兽医证型，并在应用程序内直接选择对应穴位。`,
+      hero_fine: "以以诊断为核心，辅以参考资料，快速完成辨证并形成治疗思路。",
+      btn_prev: "←",
+      btn_pause: "暂停",
+      btn_play: "播放",
+      btn_next: "→",
+
+      block1_h: "你已经学习了针灸——却难以用于临床。",
+block1_p: "这是许多学习针灸朋友的困惑：理论学了很多，但在繁忙的临床实践中，缺少一套清晰的辨证结构，能够将诊断结果自然过渡到选穴思路。",
+block1_li1: "辨证过程耗时过长，或心中无据",
+block1_li2: "选穴缺乏清晰依据，更像是在“试”",
+block1_li3: "依赖“书本处方”，难以制定个体治疗方案",
+
+block2_h: "这正是这款应用程序诞生的初衷。",
+block2_p: "让针灸在临床中真正<b>落地</b>，实现辨证有据、选穴有法。",
+block2_q: "“一个系统，帮助你把所学的辨证思路直接转化为清晰的治疗决策，而<b>不必</b>反复翻查书籍与资料。”",
+thanks_h: "致谢",
+      thanks_sub: "这个想法并非一蹴而就。在此，我衷心感谢一路上给予我启发与支持的个人与机构。",
+      thanks_p1: `特别感谢 <strong>Christina Eul-Matern</strong>，我在 <strong>2025–2026</strong> 年间有幸参加她的高级课程。在这段时间里，我学习了大量针灸知识，并显著加深了中兽医理解。`,
+      thanks_p2: `同时感谢 <strong>Chi University</strong>。我于 <strong>2021 年在瑞士</strong>完成课程，并在 <strong>2024 年</strong>有机会前往<strong>佛罗里达 Chi 大学小动物医院</strong>，亲身见证中西医在临床实践中的有机融合。`,
+      thanks_p3: `也衷心感谢来自 <strong>IVAS 西班牙</strong> 的 <strong>Dolores Pertas Navarro</strong>，我于 <strong>2020 年</strong>完成了她教授的入门课程。`,
+      thanks_p4: `我也感谢我的母校<strong>中国农业大学</strong>，在那里我第一次接触针灸，为此后持续探索的道路打下了基础。`,
+      thanks_p5: `此外，感谢 <strong>Tino Schuldt</strong> 在新技术探索上的启发，以及在本应用程序开发过程中给予的重要支持。`,
+      thanks_p6: `最后，衷心感谢我的 <strong>小患者们</strong>。它们每天提醒我践行整体疗法，我也非常感恩能在治疗之路上陪伴它们。。`,
+
+      contact_h: "联系",
+      contact_p: "如有意参与抢先体验并享受折扣价格，欢迎留言登记。应用开放下载后，我们将发送专属链接。",
+      contact_name: "姓名",
+      contact_email: "邮箱",
+      contact_msg: "留言",
+      contact_name_ph: "你的姓名",
+      contact_email_ph: "name@mail.com",
+      contact_msg_ph: "反馈、问题或抢先体验申请…",
+      contact_send: "发送",
+
+      footer_imprint: "法律声明",
+      footer_contact: "联系",
+
+      form_subject: "Acupet – 联系请求",
+      form_redirect: "https://YOUR-DOMAIN/thanks.html",
+
+      slides: {
+        s0: { title: "主菜单", sub: "患者 · 诊断 · 随访", img: "Hauptmenue.jpg", alt: "主菜单" },
+        s1: { title: "触控诊断", sub: "背俞 · 脉诊 · 舌诊 · 募穴", img: "Diagnostik.jpg", alt: "触控诊断" },
+        s2: { title: "汇总", sub: "诊断 → 证型 → 穴位", img: "Zusammenfassung.jpg", alt: "汇总" },
+        s3: { title: "穴位参考", sub: "快速匹配治疗穴位", img: "SP-3.jpg", alt: "穴位参考" },
+        s4: { title: "区域概览", sub: "清晰可视化", img: "Elbow.jpg", alt: "区域概览" }
+      }
+    },
+
+    es: {
+      langName: "Español",
+      tagline: "Diagnóstico → Terapia → Seguimiento",
+      nav_thanks: "Agradecimientos",
+      nav_contact: "Contacto y acceso anticipado",
+      hero_chip: "Desarrollado por veterinarios • práctico • estructurado",
+      hero_h1: "Acupuntura.<br>Por fin, sencilla.",
+      hero_lead: "Diagnóstico paso a paso. El camino hacia una terapia individualizada.",
+      hero_body: `Lleva el diagnóstico chino a la práctica <strong>lo antes posible</strong>:
+        combina <strong>lengua</strong>, <strong>pulso</strong>, <strong>Shu</strong> y
+        <strong>diagnóstico Mu</strong>, realiza un diagnóstico según la MTC y elige los puntos adecuados
+        directamente en la app.`,
+      hero_fine: "Trabajas basándote en el diagnóstico, con referencias que te llevan rápido al objetivo.",
+      btn_prev: "←",
+      btn_pause: "Pausa",
+      btn_play: "Play",
+      btn_next: "→",
+
+      block1_h: "Lo aprendiste, pero en el día a día falta el puente.",
+      block1_p: "A muchos les pasa: la formación es excelente, pero en la clínica falta una estructura clara para convertir diagnóstico y selección de puntos en algo rápido y seguro.",
+      block1_li1: "El diagnóstico tarda demasiado o genera dudas",
+      block1_li2: "La selección de puntos se siente como “adivinar”",
+      block1_li3: "Recetas “de libro” sin relación real con el paciente",
+
+      block2_h: "Por eso se creó esta app.",
+      block2_p: "Desarrollada por una veterinaria que recorrió la misma curva de aprendizaje, con un objetivo: hacer la acupuntura <b>aplicable</b> en la práctica: estructurada, rápida y reproducible.",
+      block2_q: "«Quería una solución que traduzca lo aprendido en decisiones reales de tratamiento — <b>sin</b> estar hojeando apuntes constantemente.»",
+
+      thanks_h: "Agradecimientos",
+      thanks_sub: "Una idea nunca nace sola. Quiero agradecer sinceramente a las personas e instituciones que me inspiraron y acompañaron en este camino.",
+      thanks_p1: `Mi agradecimiento especial es para <strong>Christina Eul-Matern</strong>, con quien pude asistir al curso avanzado en <strong>2025–2026</strong>. En ese periodo aprendí muchísimo sobre acupuntura y profundicé de forma significativa mi conocimiento.`,
+      thanks_p2: `También agradezco a <strong>Chi University</strong>. Realicé el curso en <strong>2021 en Suiza</strong> y en <strong>2024</strong> tuve la oportunidad de estar en el <strong>Chi University Teaching Hospital en Florida</strong>. Allí viví de forma muy clara cómo se pueden integrar de manera útil la medicina china y la occidental.`,
+      thanks_p3: `Otro agradecimiento muy especial para <strong>Dolores Pertas Navarro</strong> de <strong>IVAS España</strong>, con quien realicé mi primer curso en <strong>2020</strong>.`,
+      thanks_p4: `Por último, agradezco a la <strong>China Agricultural University en Pekín</strong>, donde tuve mi primer contacto con la acupuntura y se sentaron las bases de mi camino posterior.`,
+      thanks_p5: `Asimismo, agradezco a <strong>Tino Schuldt</strong> por introducir nuevas tecnologías y por su apoyo en la concepción e implementación de esta app.`,
+      thanks_p6: `Finalmente, quiero dar las gracias de corazón a mis <strong>pacientes de cuatro patas</strong>. Me motivan cada día a ofrecerles una terapia holística, y me siento muy agradecida de poder acompañarlos en su camino.`,
+
+      contact_h: "Contacto",
+      contact_p: "Si quieres asegurar el precio reducido de acceso anticipado, déjanos un mensaje. En cuanto esté disponible la descarga, recibirás el enlace directamente.",
+      contact_name: "Nombre",
+      contact_email: "Email",
+      contact_msg: "Mensaje",
+      contact_name_ph: "Tu nombre",
+      contact_email_ph: "name@mail.com",
+      contact_msg_ph: "Comentarios, pregunta o solicitud de acceso anticipado…",
+      contact_send: "Enviar mensaje",
+
+      footer_imprint: "Aviso legal",
+      footer_contact: "Contacto",
+
+      form_subject: "Acupet – Solicitud de contacto",
+      form_redirect: "https://TU-DOMINIO/thanks.html",
+
+      slides: {
+        s0: { title: "Menú principal", sub: "Paciente · Diagnóstico · Seguimiento", img: "Hauptmenue.jpg", alt: "Menú principal" },
+        s1: { title: "Diagnóstico táctil", sub: "Shu · Pulso · Lengua · Mu", img: "Diagnostik.jpg", alt: "Diagnóstico táctil" },
+        s2: { title: "Resumen", sub: "Diagnóstico → Patrón → Puntos", img: "Zusammenfassung.jpg", alt: "Resumen" },
+        s3: { title: "Referencia de puntos", sub: "Encuentra puntos en segundos", img: "SP-3.jpg", alt: "Referencia de puntos" },
+        s4: { title: "Vista regional", sub: "Visualización clara", img: "Elbow.jpg", alt: "Vista regional" }
+      }
+    },
+
+    fr: {
+      langName: "Français",
+      tagline: "Diagnostic → Thérapie → Suivi",
+      nav_thanks: "Remerciements",
+      nav_contact: "Contact & accès anticipé",
+      hero_chip: "Développé par des vétérinaires • pratique • structuré",
+      hero_h1: "Acupuncture.<br>Enfin simple.",
+      hero_lead: "Un diagnostic pas à pas. La voie vers une thérapie individualisée.",
+      hero_body: `Applique la démarche diagnostique chinoise <strong>le plus vite possible</strong> en pratique :
+        combine <strong>langue</strong>, <strong>pouls</strong>, <strong>Shu</strong> et
+        <strong>diagnostic Mu</strong>, établis un diagnostic selon la MTC, puis choisis les points adaptés
+        directement dans l’application.`,
+      hero_fine: "Tu travailles à partir du diagnostic — avec des références qui te font gagner du temps.",
+      btn_prev: "←",
+      btn_pause: "Pause",
+      btn_play: "Play",
+      btn_next: "→",
+
+      block1_h: "Tu l’as appris — mais au quotidien, il manque le pont.",
+      block1_p: "Beaucoup le vivent : la formation est excellente, mais en clinique il manque une structure claire pour passer rapidement et sûrement du diagnostic au choix des points.",
+      block1_li1: "Le diagnostic prend trop de temps ou reste incertain",
+      block1_li2: "Le choix des points ressemble à du « hasard »",
+      block1_li3: "Des recettes « cookbook » sans lien réel avec le patient",
+
+      block2_h: "C’est exactement pour ça que cette app existe.",
+      block2_p: "Conçue par une vétérinaire passée par la même courbe d’apprentissage — avec un objectif : rendre l’acupuncture réellement <b>applicable</b> : structurée, rapide, reproductible.",
+      block2_q: "« Je voulais enfin une solution qui transforme l’apprentissage en décisions thérapeutiques réelles — <b>sans</b> feuilleter des notes en permanence. »",
+
+      thanks_h: "Remerciements",
+      thanks_sub: "Une idée ne naît jamais seule. Je souhaite remercier chaleureusement les personnes et institutions qui m’ont inspirée et accompagnée tout au long de ce parcours.",
+      thanks_p1: `Mes remerciements particuliers vont à <strong>Christina Eul-Matern</strong>, auprès de qui j’ai pu suivre le cours avancé en <strong>2025–2026</strong>. Pendant cette période, j’ai énormément appris sur l’acupuncture et approfondi mes connaissances de manière significative.`,
+      thanks_p2: `Je remercie également <strong>Chi University</strong>. J’ai suivi le cours en <strong>2021 en Suisse</strong>, et en <strong>2024</strong> j’ai eu l’opportunité d’être au <strong>Chi University Teaching Hospital en Floride</strong>. J’y ai pu constater de façon marquante comment la médecine chinoise et la médecine occidentale peuvent être associées de manière pertinente.`,
+      thanks_p3: `Un autre grand merci à <strong>Dolores Pertas Navarro</strong> de <strong>IVAS Espagne</strong>, auprès de qui j’ai suivi mon premier cours en <strong>2020</strong>.`,
+      thanks_p4: `Enfin, je remercie la <strong>China Agricultural University à Pékin</strong>, où j’ai découvert l’acupuncture pour la première fois et posé les bases de la suite de mon parcours.`,
+      thanks_p5: `Je remercie aussi <strong>Tino Schuldt</strong> pour l’introduction à de nouvelles technologies ainsi que son soutien dans la conception et la mise en œuvre de cette application.`,
+      thanks_p6: `Pour terminer, je souhaite remercier de tout cœur mes <strong>patients à quatre pattes</strong>. Ils me motivent chaque jour à leur proposer une approche holistique, et je suis profondément reconnaissante de pouvoir les accompagner sur leur chemin.`,
+
+      contact_h: "Contact",
+      contact_p: "Si tu souhaites profiter du tarif réduit d’accès anticipé, laisse-nous un message. Dès que le téléchargement sera disponible, tu recevras le lien directement.",
+      contact_name: "Nom",
+      contact_email: "E-mail",
+      contact_msg: "Message",
+      contact_name_ph: "Ton nom",
+      contact_email_ph: "nom@mail.com",
+      contact_msg_ph: "Retour, question ou demande d’accès anticipé…",
+      contact_send: "Envoyer",
+
+      footer_imprint: "Mentions légales",
+      footer_contact: "Contact",
+
+      form_subject: "Acupet – Demande de contact",
+      form_redirect: "https://VOTRE-DOMAINE/thanks.html",
+
+      slides: {
+        s0: { title: "Menu principal", sub: "Patient · Diagnostic · Suivi", img: "Hauptmenue.jpg", alt: "Menu principal" },
+        s1: { title: "Diagnostic tactile", sub: "Shu · Pouls · Langue · Mu", img: "Diagnostik.jpg", alt: "Diagnostic tactile" },
+        s2: { title: "Résumé", sub: "Diagnostic → Schéma → Points", img: "Zusammenfassung.jpg", alt: "Résumé" },
+        s3: { title: "Référence des points", sub: "Trouver un point en secondes", img: "SP-3.jpg", alt: "Référence des points" },
+        s4: { title: "Vue régionale", sub: "Présentation visuelle claire", img: "Elbow.jpg", alt: "Vue régionale" }
+      }
+    }
+  };
+
+  function getLang(){
+    const p = new URLSearchParams(location.search);
+    const q = (p.get("lang") || "").toLowerCase();
+    if (q.startsWith("en")) return "en";
+    if (q.startsWith("zh")) return "zh";
+    if (q.startsWith("es")) return "es";
+    if (q.startsWith("fr")) return "fr";
+    return "de";
+  }
+
+  function setText(el, html){
+    el.innerHTML = html;
+  }
+
+  function applyI18n(lang){
+    const t = I18N[lang] || I18N.de;
+
+    document.documentElement.lang = lang;
+
+    // Text nodes with innerHTML
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+      const key = el.getAttribute("data-i18n");
+      if (t[key] != null) setText(el, t[key]);
+    });
+
+    // Placeholders
+    document.querySelectorAll("[data-i18n-ph]").forEach(el => {
+      const key = el.getAttribute("data-i18n-ph");
+      if (t[key] != null) el.setAttribute("placeholder", t[key]);
+    });
+
+    // Form subject & redirect
+    const subj = document.getElementById("formSubject");
+    const red  = document.getElementById("formRedirect");
+    if (subj && t.form_subject) subj.value = t.form_subject;
+    if (red  && t.form_redirect) red.value = t.form_redirect;
+
+    // Slides: titles/subs + image per language folder
+    const slides = Array.from(document.querySelectorAll(".slide"));
+    slides.forEach(sl => {
+      const key = sl.getAttribute("data-key");
+      const cfg = t.slides[key];
+      if (!cfg) return;
+
+      sl.dataset.title = cfg.title || "";
+      sl.dataset.sub   = cfg.sub || "";
+
+      const img = sl.querySelector("img.slideImg");
+      if (img){
+        img.src = `screens/${lang}/${cfg.img}`;  // <- pro Sprache andere Screenshots
+        img.alt = cfg.alt || "";
+      }
+    });
+
+    // Refresh topbar after slide data update (render() setzt topTitle/topSub)
+    render();
+  }
+
+  // ---------- Phone slider ----------
   const slides = Array.from(document.querySelectorAll(".slide"));
   const titleEl = document.getElementById("topTitle");
   const subEl = document.getElementById("topSub");
@@ -893,7 +1207,7 @@ p{color:var(--muted);line-height:1.55}
   function start(){
     stop();
     playing = true;
-    playBtn.textContent = "Pause";
+    playBtn.textContent = (I18N[getLang()]?.btn_pause) || "Pause";
     timer = setInterval(next, 2600);
   }
 
@@ -901,16 +1215,46 @@ p{color:var(--muted);line-height:1.55}
     if (timer) clearInterval(timer);
     timer = null;
     playing = false;
-    playBtn.textContent = "Play";
+    playBtn.textContent = (I18N[getLang()]?.btn_play) || "Play";
   }
 
   prevBtn.addEventListener("click", () => { prev(); start(); });
   nextBtn.addEventListener("click", () => { next(); start(); });
   playBtn.addEventListener("click", () => { playing ? stop() : start(); });
 
-  // Jahr im Footer setzen
-  const y = document.getElementById("year");
-  if (y) y.textContent = new Date().getFullYear();
+  phone.addEventListener("mouseenter", () => { if(playing) stop(); });
+  phone.addEventListener("mouseleave", () => { if(!playing) start(); });
+
+  // ---------- init ----------
+  document.addEventListener("DOMContentLoaded", () => {
+    const y = document.getElementById("year");
+    if (y) y.textContent = new Date().getFullYear();
+
+    initLangDropdown();
+    
+    const lang = getLang();
+    applyI18n(lang);
+
+    render();
+    start();
+  });
+  function setLang(lang){
+  const url = new URL(window.location.href);
+  url.searchParams.set("lang", lang);
+  window.location.href = url.toString();
+}
+
+function initLangDropdown(){
+  const sel = document.getElementById("langSelect");
+  if(!sel) return;
+
+  // aktuellen lang aus URL setzen
+  sel.value = getLang();
+
+  sel.addEventListener("change", () => {
+    setLang(sel.value);
+  });
+}
 
 </script>
 </body>
