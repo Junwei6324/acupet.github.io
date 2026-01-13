@@ -783,9 +783,10 @@ p{color:var(--muted);line-height:1.55}
     <div class="wrap foot">
       <div>© <span id="year"></span> Acupet • Junwei</div>
       <div class="footLinks">
-        <a href="Impressum.html" data-i18n="footer_imprint">Impressum</a>
-        <a href="mailto:junwei.foehr@gmail.com" data-i18n="footer_contact">Kontakt</a>
-      </div>
+  <a id="imprintLink" href="Impressum.html" data-i18n="footer_imprint">Impressum</a>
+  <a href="mailto:acupet.vet@gmail.com" data-i18n="footer_contact">Kontakt</a>
+</div>
+
     </div>
   </footer>
 
@@ -848,6 +849,7 @@ p{color:var(--muted);line-height:1.55}
 
       footer_imprint: "Impressum", footer_imprint_href: "impressum.html",
       footer_contact: "Kontakt",
+       footer_rights: "Alle Rechte vorbehalten.",
 
       form_subject: "Acupet – Kontaktanfrage",
       form_redirect: "https://DEINE-DOMAIN/thanks.html",
@@ -912,6 +914,7 @@ thanks_p6: "Finally, I want to thank my <strong>four-legged patients</strong> fr
 
       footer_imprint: "Imprint", footer_imprint_href: "impressum.en.html",
       footer_contact: "Contact",
+footer_rights: "All rights reserved.",
 
       form_subject: "Acupet – Contact request",
       form_redirect: "https://YOUR-DOMAIN/thanks.html",
@@ -972,6 +975,7 @@ thanks_h: "致谢",
 
       footer_imprint: "法律声明", footer_imprint_href: "impressum.cn.html",
       footer_contact: "联系",
+      footer_rights: "版权所有。",
 
       form_subject: "Acupet – 联系请求",
       form_redirect: "https://YOUR-DOMAIN/thanks.html",
@@ -1034,6 +1038,7 @@ thanks_h: "致谢",
 
       footer_imprint: "Aviso legal",footer_imprint_href: "impressum.es.html",
       footer_contact: "Contacto",
+      footer_rights: "Todos los derechos reservados.",
 
       form_subject: "Acupet – Solicitud de contacto",
       form_redirect: "https://TU-DOMINIO/thanks.html",
@@ -1096,6 +1101,7 @@ thanks_h: "致谢",
 
       footer_imprint: "Mentions légales", footer_imprint_href: "impressum.fr.html",
       footer_contact: "Contact",
+      footer_rights: "Tous droits réservés.",
 
       form_subject: "Acupet – Demande de contact",
       form_redirect: "https://VOTRE-DOMAINE/thanks.html",
@@ -1125,48 +1131,52 @@ thanks_h: "致谢",
   }
 
   function applyI18n(lang){
-    const t = I18N[lang] || I18N.de;
+  const t = I18N[lang] || I18N.de;
 
-    document.documentElement.lang = lang;
+  document.documentElement.lang = lang;
 
-    // Text nodes with innerHTML
-    document.querySelectorAll("[data-i18n]").forEach(el => {
-      const key = el.getAttribute("data-i18n");
-      if (t[key] != null) setText(el, t[key]);
-    });
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.getAttribute("data-i18n");
+    if (t[key] != null) el.innerHTML = t[key];
+  });
 
-    // Placeholders
-    document.querySelectorAll("[data-i18n-ph]").forEach(el => {
-      const key = el.getAttribute("data-i18n-ph");
-      if (t[key] != null) el.setAttribute("placeholder", t[key]);
-    });
+  document.querySelectorAll("[data-i18n-ph]").forEach(el => {
+    const key = el.getAttribute("data-i18n-ph");
+    if (t[key] != null) el.setAttribute("placeholder", t[key]);
+  });
 
-    // Form subject & redirect
-    const subj = document.getElementById("formSubject");
-    const red  = document.getElementById("formRedirect");
-    if (subj && t.form_subject) subj.value = t.form_subject;
-    if (red  && t.form_redirect) red.value = t.form_redirect;
-
-    // Slides: titles/subs + image per language folder
-    const slides = Array.from(document.querySelectorAll(".slide"));
-    slides.forEach(sl => {
-      const key = sl.getAttribute("data-key");
-      const cfg = t.slides[key];
-      if (!cfg) return;
-
-      sl.dataset.title = cfg.title || "";
-      sl.dataset.sub   = cfg.sub || "";
-
-      const img = sl.querySelector("img.slideImg");
-      if (img){
-        img.src = `screens/${lang}/${cfg.img}`;  // <- pro Sprache andere Screenshots
-        img.alt = cfg.alt || "";
-      }
-    });
-
-    // Refresh topbar after slide data update (render() setzt topTitle/topSub)
-    render();
+  // ✅ footer imprint link (THIS is the new part)
+  const imprint = document.getElementById("imprintLink");
+  if (imprint && t.footer_imprint_href) {
+    imprint.href = t.footer_imprint_href;
   }
+
+  // existing form logic
+  const subj = document.getElementById("formSubject");
+  const red  = document.getElementById("formRedirect");
+  if (subj && t.form_subject) subj.value = t.form_subject;
+  if (red  && t.form_redirect) red.value = t.form_redirect;
+
+  // slides update (unchanged)
+  const slides = Array.from(document.querySelectorAll(".slide"));
+  slides.forEach(sl => {
+    const key = sl.getAttribute("data-key");
+    const cfg = t.slides[key];
+    if (!cfg) return;
+
+    sl.dataset.title = cfg.title || "";
+    sl.dataset.sub   = cfg.sub || "";
+
+    const img = sl.querySelector("img.slideImg");
+    if (img){
+      img.src = `screens/${lang}/${cfg.img}`;
+      img.alt = cfg.alt || "";
+    }
+  });
+
+  render();
+}
+
 
   // ---------- Phone slider ----------
   const slides = Array.from(document.querySelectorAll(".slide"));
